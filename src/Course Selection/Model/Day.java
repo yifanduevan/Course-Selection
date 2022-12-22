@@ -9,7 +9,7 @@ public class Day {
     private int day;
     private String dayName;
 
-    private ArrayList<Time> times = new ArrayList<Time>();
+    private ArrayList<Time> times = new ArrayList<>();
 
     public Day(int day) {
         this.day = day;
@@ -47,8 +47,14 @@ public class Day {
     public Time getTime(){
         return times.get(0);
     }
-    public void addTime(Time time) {
+    public boolean addTime(Time time) {
+        for (int i = 0; i < times.size(); i++) {
+            if (times.get(i).getStartTime() == time.getStartTime()) {
+                return false;
+            }
+        }
         times.add(time);
+        return true;
     }
     public String toString() {
         return dayName;
