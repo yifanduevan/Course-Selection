@@ -4,6 +4,7 @@ import Model.Section;
 import Model.Time;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import static Model.Schedule.isOverlapping;
 
@@ -37,7 +38,7 @@ public class Test {
 
 
 
-        ArrayList<Section> sections = new ArrayList<Section>();
+        LinkedList<Section> sections = new LinkedList<Section>();
         Course course = new Course("Intro to Java", 123, 3, "Computer Science", sections);
         Section section = new Section("Intro to Java", 123, "Mr. Smith", "Room 123");
         Course course1 = new Course("a", 12, 3, "Computer organization", sections);

@@ -10,9 +10,9 @@ public class Section {
     private int sectionNumber;
     private String instructor;
     private String location;
-    private Time time;
-    private String day;
     private ArrayList<Day> days = new ArrayList<Day>();
+
+    private Course course = new Course();
 
     public Section(String name, int sectionNumber, String instructor, String location) {
         this.name = name;
@@ -36,8 +36,26 @@ public class Section {
         return days;
     }
 
-    public void addDay(Day day) {
+    public boolean addDay(Day day) {
+        for (int i = 0; i < days.size(); i++) {
+            if (days.get(i).getDayName().equals(day.getDayName())) {
+                return false;
+            }
+        }
         days.add(day);
+        return true;
+    }
+
+    public int getSectionNumber() {
+        return sectionNumber;
+    }
+
+    public void setCourse(Course course){
+        this.course = course;
+    }
+
+    public Course getCourse() {
+        return course;
     }
 
     public String toString() {
@@ -54,15 +72,6 @@ public class Section {
                 "Location:" + location + "\n" +
                 "Days:" + days + "\n" +
                 "Time:" + time + "\n";
-    }
-
-    /**
-     * This method converts time in hour minute format to only minutes
-     */
-    public static int convertTimeToMinutes(String time) {
-        int hour = Integer.parseInt(time.substring(0, 2));
-        int minute = Integer.parseInt(time.substring(3, 5));
-        return hour * 60 + minute;
     }
 
 }

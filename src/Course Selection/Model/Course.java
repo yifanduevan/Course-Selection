@@ -1,6 +1,8 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class Course {
     /**
      * The constructor accepts the course name, course number, the number of credits, course category, and the course description
@@ -9,8 +11,8 @@ public class Course {
     private int courseNumber;
     private int credits;
     private String category;
-    private ArrayList<Section> sections;
-    public Course(String name, int courseNumber, int credits, String category, ArrayList<Section> sections) {
+    private LinkedList<Section> sections;
+    public Course(String name, int courseNumber, int credits, String category, LinkedList<Section> sections) {
         this.name = name;
         this.courseNumber = courseNumber;
         this.credits = credits;
@@ -22,7 +24,7 @@ public class Course {
         this.courseNumber = 0;
         this.credits = 0;
         this.category = "";
-        this.sections = new ArrayList<Section>();
+        this.sections = new LinkedList<>();
     }
     public String getName() {
         return name;
@@ -36,7 +38,7 @@ public class Course {
     public String getCategory() {
         return category;
     }
-    public ArrayList<Section> getSections() {
+    public LinkedList<Section> getSections() {
         return sections;
     }
     public String toString() {
@@ -46,8 +48,15 @@ public class Course {
                 "Category:" + category  + "\n" +
                 "Sections:" + sections + "\n";
     }
-    public void addSection(Section section) {
+    public boolean addSection(Section section) {
+        for (int i = 0; i < sections.size(); i++) {
+            if (sections.get(i).getSectionNumber() == section.getSectionNumber()) {
+                return false;
+            }
+        }
         sections.add(section);
+        section.setCourse(this);
+        return true;
     }
     public void removeSection(Section section) {
         sections.remove(section);
