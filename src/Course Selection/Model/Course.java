@@ -8,28 +8,28 @@ public class Course {
      * The constructor accepts the course name, course number, the number of credits, course category, and the course description
      */
     private String name;
-    private int courseNumber;
+    private String courseNumber;
     private int credits;
     private String category;
-    private LinkedList<Section> sections;
-    public Course(String name, int courseNumber, int credits, String category, LinkedList<Section> sections) {
+    private ArrayList<Section> sections;
+    public Course(String name, String courseNumber, int credits, String category) {
         this.name = name;
         this.courseNumber = courseNumber;
         this.credits = credits;
         this.category = category;
-        this.sections = sections;
+        this.sections = new ArrayList<>();
     }
     public Course(){
         this.name = "";
-        this.courseNumber = 0;
+        this.courseNumber = "";
         this.credits = 0;
         this.category = "";
-        this.sections = new LinkedList<>();
+        this.sections = new ArrayList<>();
     }
     public String getName() {
         return name;
     }
-    public int getCourseNumber() {
+    public String getCourseNumber() {
         return courseNumber;
     }
     public int getCredits() {
@@ -38,7 +38,7 @@ public class Course {
     public String getCategory() {
         return category;
     }
-    public LinkedList<Section> getSections() {
+    public ArrayList<Section> getSections() {
         return sections;
     }
     public String toString() {
@@ -64,7 +64,7 @@ public class Course {
     public void setName(String name) {
         this.name = name;
     }
-    public void setCourseNumber(int courseNumber) {
+    public void setCourseNumber(String courseNumber) {
         this.courseNumber = courseNumber;
     }
     public void setCredits(int credits) {

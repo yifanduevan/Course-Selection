@@ -11,11 +11,10 @@ public class Section {
     private String instructor;
     private String location;
     private ArrayList<Day> days = new ArrayList<Day>();
-
     private Course course = new Course();
 
-    public Section(String name, int sectionNumber, String instructor, String location) {
-        this.name = name;
+
+    public Section(int sectionNumber, String instructor, String location) {
         this.sectionNumber = sectionNumber;
         this.instructor = instructor;
         this.location = location;

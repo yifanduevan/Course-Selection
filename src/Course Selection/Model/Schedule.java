@@ -7,7 +7,7 @@ import java.util.*;
 public class Schedule{
     private HashSet<Course> courses = Scheduler.getCourses();
     private LinkedList<Course> coursesList = Scheduler.getCoursesList();
-    private HashMap<Course, Section> sections = new HashMap<>();
+    private ArrayList<Section> sections = new ArrayList<>();
     /**
      * constructor
      */
@@ -43,12 +43,10 @@ public class Schedule{
      * @return true if there is a conflict, false if there is no conflict
      */
     public static boolean isConflict(Schedule schedule) {
-        HashMap<Course, Section> sections = schedule.getSections();
-        for (Course course : sections.keySet()) {
-            for (Course otherCourse : sections.keySet()) {
-                if (!course.equals(otherCourse)) {
-                    Section section = sections.get(course);
-                    Section otherSection = sections.get(otherCourse);
+        ArrayList<Section> sections = schedule.getSections();
+        for (Section section : sections) {
+            for (Section otherSection : sections) {
+                if (!section.getCourse().equals(otherSection.getCourse())) {
                     if (isOverlapping(section, otherSection)) {
                         return true;
                     }
@@ -58,17 +56,17 @@ public class Schedule{
         return false;
     }
     public void addSection (Section section) {
-        if (sections.size() == 0) {
-            sections.put(section.getCourse(), section);
-        }
-        if (!sections.containsKey(section.getCourse())) {
-            sections.put(section.getCourse(), section);
-        }
+        sections.add(section);
     }
     public void removeSection (Section section) {
         sections.remove(section);
     }
-    public HashMap<Course, Section> getSections() {
+    public ArrayList<Section> getSections() {
         return sections;
+    }
+    public void toStringSchedule() {
+        for (Section section : sections) {
+            System.out.println(section.getCourse().getName() + " " + section.getSectionNumber());
+        }
     }
 }
