@@ -6,7 +6,8 @@ import static Model.Schedule.isConflict;
 public class Scheduler {
     private static HashSet<Course> courses = new HashSet<>();
     private static LinkedList<Course> coursesList = new LinkedList<>();
-    private static List<Schedule> result = new ArrayList<>();
+    private static List<List<Section>> result = new ArrayList<>();
+
     public Scheduler() {
 
     }

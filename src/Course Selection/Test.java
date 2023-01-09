@@ -1,12 +1,8 @@
 import Model.*;
-
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import static Controller.Scheduler.getAllSchedules;
-//import static Controller.Scheduler.getValidSchedules;
-import static Model.Schedule.isOverlapping;
 
 public class Test {
     public static void main(String[] args) {
@@ -136,10 +132,12 @@ public class Test {
         courses.add(course4);
 
         getAllSchedules(courses, 0, new ArrayList<>(), result);
+        ScheduleSet.loadSchedules(result);
+        ScheduleSet.storeValidSchedules();
 
-
-        for (List<Section> schedule : result) {
-            System.out.println(schedule);
+        ArrayList<Schedule> validSchedules = ScheduleSet.getValidSchedules();
+        for (Schedule schedule : validSchedules) {
+            schedule.toStringSchedule();
         }
     }
 }

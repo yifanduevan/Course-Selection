@@ -65,8 +65,8 @@ public class Section {
             time += days.get(i).getTimeInString();
         }
 
-        return "Section:" + sectionNumber + "\n" +
-                "Name:" + name + "\n" +
+        return "\nName:" + course.getName() + "\n" +
+                "Section:" + sectionNumber + "\n" +
                 "Instructor:" + instructor + "\n" +
                 "Location:" + location + "\n" +
                 "Days:" + days + "\n" +
